@@ -1,0 +1,45 @@
+class Solution {
+    public int maximumSwap(int num) {
+
+         List<Integer> list=new ArrayList<>();
+         List<Integer> list2=new ArrayList<>();
+
+         int temp=num;
+         
+
+         while(temp!=0){
+            int a=temp%10;
+            list.add(a);
+            list2.add(a);
+           
+            
+            temp/=10;
+         }
+
+         Collections.sort(list2);
+
+         for(int i=list.size()-1;i>=0;i--){
+
+            if(list2.get(i)!=list.get(i)){
+                int lastindex=list.indexOf(list2.get(i));
+
+                int tempp=list.get(i);
+                list.set(i,list2.get(i));
+                list.set(lastindex,tempp);
+                break;
+            }
+         }
+
+
+
+
+         int ans=0;
+         for(int i=list.size()-1;i>=0;i--){
+            ans=ans*10+list.get(i);
+
+
+         }
+         return ans;
+        
+    }
+}
